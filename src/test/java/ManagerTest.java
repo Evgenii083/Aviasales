@@ -74,6 +74,24 @@ public class ManagerTest {
         Ticket[] expected = {ticket9, ticket8, ticket1, ticket4};
         Assertions.assertArrayEquals(expected, res);
     }
+    @Test
+    public void shouldNotFindTicketsWithWrongConditional() {
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+
+        Ticket[] res = manager.findTicket("SPB", "BUD");
+        Arrays.sort(res);
+
+        Ticket[] expected = {};
+        Assertions.assertArrayEquals(expected, res);
+    }
 
     @Test
     public void shouldDeleteTicketAfterFindAndSort() {
@@ -85,6 +103,27 @@ public class ManagerTest {
 
         Ticket[] expected = {ticket1, ticket3};
         Assertions.assertArrayEquals(expected,manager.getTickets());
+    }
+
+    @Test
+    public void test(){
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+
+        ticket8.setPrice(6380);
+
+        Ticket[] res = manager.findTicket("TGD", "BUD");
+        Arrays.sort(res);
+
+        Ticket[] expected = {ticket8, ticket9, ticket1, ticket4};
+        Assertions.assertArrayEquals(expected, res);
     }
 }
 

@@ -3,9 +3,9 @@ public class Ticket implements Comparable<Ticket> {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public int getPrice() {
         return price;
@@ -19,25 +19,25 @@ public class Ticket implements Comparable<Ticket> {
         return departure;
     }
 
-    public void setDeparture(String departure) {
-        this.departure = departure;
-    }
+//    public void setDeparture(String departure) {
+//        this.departure = departure;
+//    }
 
     public String getArrival() {
         return arrival;
     }
 
-    public void setArrival(String arrival) {
-        this.arrival = arrival;
-    }
+//    public void setArrival(String arrival) {
+//        this.arrival = arrival;
+//    }
 
-    public int getTravelTime() {
-        return travelTime;
-    }
-
-    public void setTravelTime(int travelTime) {
-        this.travelTime = travelTime;
-    }
+//    public int getTravelTime() {
+//        return travelTime;
+//    }
+//
+//    public void setTravelTime(int travelTime) {
+//        this.travelTime = travelTime;
+//    }
 
     public Ticket(int id, int price, String departure, String arrival, int travelTime) {
         this.id = id;
