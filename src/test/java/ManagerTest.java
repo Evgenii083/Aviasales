@@ -13,7 +13,9 @@ public class ManagerTest {
     Ticket ticket7 = new Ticket(7, 6320, "KRK", "TIV", 90);
     Ticket ticket8 = new Ticket(8, 7148, "TGD", "BUD", 90);
     Ticket ticket9 = new Ticket(9, 6380, "TGD", "BUD", 89);
-
+    Ticket ticket10 = new Ticket(10, 5300, "KRK", "TIV", 45);
+    Ticket ticket11 = new Ticket(11, 8800, "KRK", "TIV", 45);
+    Ticket ticket12 = new Ticket(12, 4600, "KRK", "TIV", 45);
 
     @Test
     public void shouldAddTickets() {
@@ -108,5 +110,77 @@ public class ManagerTest {
         Ticket[] expected = {ticket2, ticket7};
         Assertions.assertArrayEquals(expected, manager.findTicket("KRK", "TIV"));
 
+    }
+    @Test
+    public void shouldNotFindAllTicketsWithWrongConditional() {
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+
+        Ticket[] expected = {};
+        Assertions.assertArrayEquals(expected, manager.findAllSorted("SPB", "BUD"));
+    }
+
+    @Test
+    public void timeSortTest() {
+
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+
+        Ticket[] expected = {ticket1, ticket9, ticket8, ticket4};
+        Assertions.assertArrayEquals(expected, manager.findAllSorted("TGD", "BUD"));
+    }
+
+    @Test
+    public void timeSortInCaseTheSameTimeTravel() {
+
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+        manager.addTicket(ticket10);
+        manager.addTicket(ticket11);
+        manager.addTicket(ticket12);
+
+        Ticket[] expected = {ticket2, ticket10, ticket11, ticket12, ticket7};
+        Assertions.assertArrayEquals(expected, manager.findAllSorted("KRK", "TIV"));
+    }
+
+    @Test
+    public void shouldFindAllFastestTickets() {
+
+        manager.addTicket(ticket1);
+        manager.addTicket(ticket2);
+        manager.addTicket(ticket3);
+        manager.addTicket(ticket4);
+        manager.addTicket(ticket5);
+        manager.addTicket(ticket6);
+        manager.addTicket(ticket7);
+        manager.addTicket(ticket8);
+        manager.addTicket(ticket9);
+        manager.addTicket(ticket10);
+        manager.addTicket(ticket11);
+        manager.addTicket(ticket12);
+
+        Ticket[] expected = {ticket2, ticket10, ticket11, ticket12, ticket7};
+        Assertions.assertArrayEquals(expected, manager.findAllSorted("KRK", "TIV"));
     }
 }

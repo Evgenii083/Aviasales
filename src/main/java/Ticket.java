@@ -1,4 +1,19 @@
 public class Ticket implements Comparable<Ticket> {
+    protected int id;
+    protected int price;
+    protected String departure;
+    protected String arrival;
+    protected int travelTime;
+
+
+    public Ticket(int id, int price, String departure, String arrival, int travelTime) {
+        this.id = id;
+        this.price = price;
+        this.departure = departure;
+        this.arrival = arrival;
+        this.travelTime = travelTime;
+    }
+
     public int getId() {
         return id;
     }
@@ -27,32 +42,17 @@ public class Ticket implements Comparable<Ticket> {
         return arrival;
     }
 
-//    public void setArrival(String arrival) {
+   // public void setArrival(String arrival) {
 //        this.arrival = arrival;
 //    }
 
-//    public int getTravelTime() {
-//        return travelTime;
-//    }
-//
+    public int getTravelTime() {
+        return travelTime;
+    }
+
 //    public void setTravelTime(int travelTime) {
 //        this.travelTime = travelTime;
 //    }
-
-    public Ticket(int id, int price, String departure, String arrival, int travelTime) {
-        this.id = id;
-        this.price = price;
-        this.departure = departure;
-        this.arrival = arrival;
-        this.travelTime = travelTime;
-    }
-
-    protected int id;
-    protected int price;
-    protected String departure;
-    protected String arrival;
-    protected int travelTime;
-
 
     @Override
     public int compareTo(Ticket o) {

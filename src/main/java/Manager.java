@@ -28,6 +28,24 @@ public class Manager {
         return result;
     }
 
+    public Ticket[] findAllSorted(String departure, String arrival) {
+        Ticket[] result = new Ticket[0];
+        Ticket[] tmp;
+        for (Ticket ticket : repo.getTickets()) {
+            if (ticket.getArrival().contains(arrival) && ticket.getDeparture().contains(departure)) {
+                tmp = new Ticket[result.length + 1];
+                tmp[tmp.length - 1] = ticket;
+                for (int i = 0; i < result.length; i++) {
+                    tmp[i] = result[i];
+                }
+                result = tmp;
+            }
+        }
+        TicketByTimeSortComparator comparator = new TicketByTimeSortComparator();
+        Arrays.sort(result, comparator);
+        return result;
+    }
+
     public Ticket[] getTickets() {
         return repo.getTickets();
     }
