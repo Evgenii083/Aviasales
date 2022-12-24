@@ -15,10 +15,16 @@ public class Manager {
         Ticket[] result = new Ticket[0];
         for (Ticket ticket : repo.getTickets()) {
             if (ticket.getArrival().contains(arrival) && ticket.getDeparture().contains(departure)) {
-                result = Arrays.copyOf(result, result.length + 1); // этот метод я честно загуглил , так как я не понимаю copyToIndex
-                result[result.length - 1] = ticket;
+
+                Ticket[] tmp = new Ticket[result.length + 1];
+                tmp[tmp.length - 1] = ticket;
+                for (int i = 0; i < result.length; i++) {
+                    tmp[i] = result[i];
+                }
+                result = tmp;
             }
         }
+        Arrays.sort(result,Ticket::compareTo);
         return result;
     }
 
